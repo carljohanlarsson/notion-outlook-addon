@@ -23,20 +23,28 @@
     </Sets>
   </Requirements>
 
-  <FormSettings>
-    <Form xsi:type="ItemRead">
-      <DesktopSettings>
-        <SourceLocation DefaultValue="https://carljohanlarsson.github.io/notion-outlook-addon/taskpane.html"/>
-        <RequestedHeight>250</RequestedHeight>
-      </DesktopSettings>
-    </Form>
-  </FormSettings>
-
-  <ExtensionPoint xsi:type="MessageReadCommandSurface">
+  <ExtensionPoint xsi:type="AppointmentAttendeeCommandSurface">
     <OfficeTab id="TabDefault">
       <Group id="msgReadGroup">
         <Label resid="groupLabel"/>
         <Control xsi:type="Button" id="showTaskPaneButton">
+          <Label resid="paneButtonLabel"/>
+          <Icon>
+            <bt:Image size="16" resid="icon16"/>
+          </Icon>
+          <Action xsi:type="ShowTaskPane">
+            <SourceLocation resid="messageReadTaskPaneUrl"/>
+          </Action>
+        </Control>
+      </Group>
+    </OfficeTab>
+  </ExtensionPoint>
+
+  <ExtensionPoint xsi:type="AppointmentOrganizerCommandSurface">
+    <OfficeTab id="TabDefault">
+      <Group id="msgReadGroup2">
+        <Label resid="groupLabel"/>
+        <Control xsi:type="Button" id="showTaskPaneButton2">
           <Label resid="paneButtonLabel"/>
           <Icon>
             <bt:Image size="16" resid="icon16"/>
