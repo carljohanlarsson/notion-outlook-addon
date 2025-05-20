@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
            xsi:type="MailApp">
 
   <Id>03cf9621-7bf3-41fb-8747-00437e681446</Id>
   <Version>1.0.0.0</Version>
   <ProviderName>Carl-Johan Larsson</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="Notion Lookup"/>
-  <Description DefaultValue="Show Notion page linked to this calendar event"/>
+  <DisplayName DefaultValue="Notion Lookup">
+    <Override Locale="en-US" Value="Notion Lookup"/>
+  </DisplayName>
+  <Description DefaultValue="Show Notion page linked to this calendar event">
+    <Override Locale="en-US" Value="Show Notion page linked to this calendar event"/>
+  </Description>
 
-  <IconUrl DefaultValue="https://carljohanlarsson.github.io/notion-outlook-addon/icon.png"/>
+  <IconUrl DefaultValue="https://carljohanlarsson.github.io/notion-outlook-addon/icon-80.png"/>
   <SupportUrl DefaultValue="https://carljohanlarsson.github.io/notion-outlook-addon/"/>
 
   <Hosts>
@@ -18,11 +23,12 @@
   </Hosts>
 
   <Requirements>
-    <Sets DefaultMinVersion="1.1">
+    <Sets DefaultMinVersion="1.6">
       <Set Name="Mailbox"/>
     </Sets>
   </Requirements>
 
+  <!-- Extension Point for Appointment Attendees -->
   <ExtensionPoint xsi:type="AppointmentAttendeeCommandSurface">
     <OfficeTab id="TabDefault">
       <Group id="group1">
@@ -31,6 +37,28 @@
           <Label resid="buttonLabel"/>
           <Icon>
             <bt:Image size="16" resid="icon16"/>
+            <bt:Image size="32" resid="icon32"/>
+            <bt:Image size="80" resid="icon80"/>
+          </Icon>
+          <Action xsi:type="ShowTaskPane">
+            <SourceLocation resid="taskpaneUrl"/>
+          </Action>
+        </Control>
+      </Group>
+    </OfficeTab>
+  </ExtensionPoint>
+
+  <!-- Extension Point for Appointment Organizers -->
+  <ExtensionPoint xsi:type="AppointmentOrganizerCommandSurface">
+    <OfficeTab id="TabDefaultOrganizer">
+      <Group id="group2">
+        <Label resid="groupLabel"/>
+        <Control xsi:type="Button" id="showTaskPaneButtonOrganizer">
+          <Label resid="buttonLabel"/>
+          <Icon>
+            <bt:Image size="16" resid="icon16"/>
+            <bt:Image size="32" resid="icon32"/>
+            <bt:Image size="80" resid="icon80"/>
           </Icon>
           <Action xsi:type="ShowTaskPane">
             <SourceLocation resid="taskpaneUrl"/>
@@ -42,7 +70,9 @@
 
   <Resources>
     <bt:Images>
-      <bt:Image id="icon16" DefaultValue="https://carljohanlarsson.github.io/notion-outlook-addon/icon.png"/>
+      <bt:Image id="icon16" DefaultValue="https://carljohanlarsson.github.io/notion-outlook-addon/icon-16.png"/>
+      <bt:Image id="icon32" DefaultValue="https://carljohanlarsson.github.io/notion-outlook-addon/icon-32.png"/>
+      <bt:Image id="icon80" DefaultValue="https://carljohanlarsson.github.io/notion-outlook-addon/icon-80.png"/>
     </bt:Images>
     <bt:Urls>
       <bt:Url id="taskpaneUrl" DefaultValue="https://carljohanlarsson.github.io/notion-outlook-addon/taskpane.html"/>
