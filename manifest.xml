@@ -3,12 +3,12 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xsi:type="MailApp">
 
-  <Id>12345678-90ab-cdef-1234-567890abcdef</Id>
+  <Id>03cf9621-7bf3-41fb-8747-00437e681446</Id>
   <Version>1.0.0.0</Version>
   <ProviderName>Carl-Johan Larsson</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Notion Lookup"/>
-  <Description DefaultValue="Link Outlook Events to Notion"/>
+  <Description DefaultValue="Show Notion page linked to this calendar event"/>
 
   <IconUrl DefaultValue="https://carljohanlarsson.github.io/notion-outlook-addon/icon.png"/>
   <SupportUrl DefaultValue="https://carljohanlarsson.github.io/notion-outlook-addon/"/>
@@ -18,39 +18,22 @@
   </Hosts>
 
   <Requirements>
-    <Sets DefaultMinVersion="1.5">
-      <Set Name="Mailbox" />
+    <Sets DefaultMinVersion="1.1">
+      <Set Name="Mailbox"/>
     </Sets>
   </Requirements>
 
   <ExtensionPoint xsi:type="AppointmentAttendeeCommandSurface">
     <OfficeTab id="TabDefault">
-      <Group id="msgReadGroup">
+      <Group id="group1">
         <Label resid="groupLabel"/>
         <Control xsi:type="Button" id="showTaskPaneButton">
-          <Label resid="paneButtonLabel"/>
+          <Label resid="buttonLabel"/>
           <Icon>
             <bt:Image size="16" resid="icon16"/>
           </Icon>
           <Action xsi:type="ShowTaskPane">
-            <SourceLocation resid="messageReadTaskPaneUrl"/>
-          </Action>
-        </Control>
-      </Group>
-    </OfficeTab>
-  </ExtensionPoint>
-
-  <ExtensionPoint xsi:type="AppointmentOrganizerCommandSurface">
-    <OfficeTab id="TabDefault">
-      <Group id="msgReadGroup2">
-        <Label resid="groupLabel"/>
-        <Control xsi:type="Button" id="showTaskPaneButton2">
-          <Label resid="paneButtonLabel"/>
-          <Icon>
-            <bt:Image size="16" resid="icon16"/>
-          </Icon>
-          <Action xsi:type="ShowTaskPane">
-            <SourceLocation resid="messageReadTaskPaneUrl"/>
+            <SourceLocation resid="taskpaneUrl"/>
           </Action>
         </Control>
       </Group>
@@ -62,11 +45,11 @@
       <bt:Image id="icon16" DefaultValue="https://carljohanlarsson.github.io/notion-outlook-addon/icon.png"/>
     </bt:Images>
     <bt:Urls>
-      <bt:Url id="messageReadTaskPaneUrl" DefaultValue="https://carljohanlarsson.github.io/notion-outlook-addon/taskpane.html"/>
+      <bt:Url id="taskpaneUrl" DefaultValue="https://carljohanlarsson.github.io/notion-outlook-addon/taskpane.html"/>
     </bt:Urls>
     <bt:ShortStrings>
-      <bt:String id="groupLabel" DefaultValue="Notion"/>
-      <bt:String id="paneButtonLabel" DefaultValue="Show Notion Link"/>
+      <bt:String id="groupLabel" DefaultValue="Notion Tools"/>
+      <bt:String id="buttonLabel" DefaultValue="Open Notion Link"/>
     </bt:ShortStrings>
   </Resources>
 
