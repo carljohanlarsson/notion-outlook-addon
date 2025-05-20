@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:type="MailApp">
+
+  <Id>12345678-90ab-cdef-1234-567890abcdef</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>Carl-Johan Larsson</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="Notion Lookup"/>
+  <Description DefaultValue="Link Outlook Events to Notion"/>
+
+  <IconUrl DefaultValue="https://carljohanlarsson.github.io/notion-outlook-addon/icon.png"/>
+  <SupportUrl DefaultValue="https://carljohanlarsson.github.io/notion-outlook-addon/"/>
+
+  <Hosts>
+    <Host Name="Mailbox"/>
+  </Hosts>
+
+  <Requirements>
+    <Sets DefaultMinVersion="1.5">
+      <Set Name="Mailbox" />
+    </Sets>
+  </Requirements>
+
+  <FormSettings>
+    <Form xsi:type="ItemRead">
+      <DesktopSettings>
+        <SourceLocation DefaultValue="https://carljohanlarsson.github.io/notion-outlook-addon/taskpane.html"/>
+        <RequestedHeight>250</RequestedHeight>
+      </DesktopSettings>
+    </Form>
+  </FormSettings>
+
+  <ExtensionPoint xsi:type="MessageReadCommandSurface">
+    <OfficeTab id="TabDefault">
+      <Group id="msgReadGroup">
+        <Label resid="groupLabel"/>
+        <Control xsi:type="Button" id="showTaskPaneButton">
+          <Label resid="paneButtonLabel"/>
+          <Icon>
+            <bt:Image size="16" resid="icon16"/>
+          </Icon>
+          <Action xsi:type="ShowTaskPane">
+            <SourceLocation resid="messageReadTaskPaneUrl"/>
+          </Action>
+        </Control>
+      </Group>
+    </OfficeTab>
+  </ExtensionPoint>
+
+  <Resources>
+    <bt:Images>
+      <bt:Image id="icon16" DefaultValue="https://carljohanlarsson.github.io/notion-outlook-addon/icon.png"/>
+    </bt:Images>
+    <bt:Urls>
+      <bt:Url id="messageReadTaskPaneUrl" DefaultValue="https://carljohanlarsson.github.io/notion-outlook-addon/taskpane.html"/>
+    </bt:Urls>
+    <bt:ShortStrings>
+      <bt:String id="groupLabel" DefaultValue="Notion"/>
+      <bt:String id="paneButtonLabel" DefaultValue="Show Notion Link"/>
+    </bt:ShortStrings>
+  </Resources>
+
+  <Permissions>ReadItem</Permissions>
+</OfficeApp>
